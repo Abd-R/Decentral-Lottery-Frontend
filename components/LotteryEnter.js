@@ -8,8 +8,9 @@ export default function () {
 
     const { chainId: chainIdHex, isWeb3Enabled } = useMoralis()
     const chainId = parseInt(chainIdHex);
-    console.log(chainId)
+    // console.log(chainId)
     const raffleAddress = chainId in contractAddress ? contractAddress[chainId][0] : null
+    console.log("Address: " + raffleAddress)
     const [enteranceFee, setEnteranceFee] = useState("0")
     const [numPlayers, setNumPlayers] = useState(0)
     const [recentWinner, setRecentWinner] = useState("0")
@@ -89,7 +90,7 @@ export default function () {
                     className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded ml-auto'
                     onClick={
                         async () => {
-                            console.log("C")
+
                             await enterRaffle({
                                 onSuccess: handleSuccess,
                                 onError: (err) => console.log(err)
